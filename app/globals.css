@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .special_underline {
+    border-bottom-width: 0;
+    background-image: linear-gradient(transparent, transparent),
+      linear-gradient(#fff, #fff);
+    background-size: 0 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: 0.5s ease-in-out;
+  }
+
+  .special_underline {
+    background-image: linear-gradient(transparent, transparent),
+      linear-gradient(#606bd6, #606bd6);
+  }
+
+  .special_underline:hover {
+    background-size: 100% 4px;
+    background-position: 0 100%;
+  }
+}
