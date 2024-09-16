@@ -35,6 +35,7 @@ const Header = () => {
   const handleSignOut = async () => {
     try {
       await signOut();
+      setIsOpen(false);
     } catch (error) {
       console.log(error);
     }
@@ -124,7 +125,13 @@ const Header = () => {
             )}
           </div>
         </div>
-        {isOpen && <Menu user={user ?? null} handleSignOut={handleSignOut} />}
+        {isOpen && (
+          <Menu
+            user={user ?? null}
+            handleSignOut={handleSignOut}
+            setIsOpen={setIsOpen}
+          />
+        )}
       </div>
     </header>
   );

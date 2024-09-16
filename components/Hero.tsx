@@ -12,11 +12,12 @@ const Hero = () => {
       </h1>
       <p
         className="max-w-xl mx-auto font-medium text-xl 
-      max-md:text-[16px] text-zinc-500"
+      max-md:text-[18px] max-sm:text-[16px] text-zinc-500"
       >
-        Our approach combines real-time news analysis with stock market data to
-        deliver actionable predictions. Discover how headlines can influence
-        stock prices and optimize your investments.
+        Leverage the power news headlines to determine sentiment and predict the
+        impact on stock prices. Stay ahead of the market with real-time
+        insights. Make informed decisions with data-driven predictions for stock
+        performance.
       </p>
     </section>
   );

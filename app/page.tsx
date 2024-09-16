@@ -1,4 +1,4 @@
-import { NewsFeed, Header, Hero } from "@/components";
+import { NewsFeed, Header, Hero, About, Footer } from "@/components";
 import React from "react";
 
 const Home = () => {
@@ -8,7 +8,9 @@ const Home = () => {
       <div className="max-w-7xl mx-auto">
         <Hero />
         <NewsFeed />
+        <About />
       </div>
+      <Footer />
     </main>
   );
 };

@@ -12,7 +12,7 @@ const config: Config = {
         custom: ["Cambria", "serif"],
       },
       colors: {
-        primary: "#606bd6",
+        primary: "#4046ed",
         primary_light: "#7795f8",
       },
     },

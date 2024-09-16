@@ -3,7 +3,7 @@ import React from "react";
 import { links } from "@/constants";
 import { MenuProps } from "@/lib/types";
 
-const Menu = ({ user, handleSignOut }: MenuProps) => {
+const Menu = ({ user, handleSignOut, setIsOpen }: MenuProps) => {
   return (
     <div
       className="flex flex-col gap-3 font-semibold p-5 
@@ -20,7 +20,12 @@ const Menu = ({ user, handleSignOut }: MenuProps) => {
         </Link>
       )}
       {links.map((link, index) => (
-        <Link key={index} href={link.hash} className="special_underline">
+        <Link
+          key={index}
+          href={link.hash}
+          onClick={() => setIsOpen(false)}
+          className="special_underline"
+        >
           {link.name}
         </Link>
       ))}

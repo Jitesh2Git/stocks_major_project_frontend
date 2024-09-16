@@ -94,7 +94,7 @@ const Register = () => {
               pattern="[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}"
               title="Please enter a valid email address"
               className="mt-1 p-3 border border-gray-300 rounded-md
-              font-medium"
+              font-medium outline-none focus:border-primary"
             />
           </label>
           <label
@@ -108,8 +108,8 @@ const Register = () => {
                 name="password"
                 placeholder="Password"
                 required
-                className="w-full p-3 border border-gray-300 
-                rounded-md pr-10 font-medium"
+                className="mt-1 w-full p-3 border border-gray-300 
+                rounded-md pr-10 font-medium outline-none focus:border-primary"
               />
               <div
                 className="absolute inset-y-0 right-0 flex items-center 
