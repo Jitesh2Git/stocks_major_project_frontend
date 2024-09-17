@@ -14,11 +14,11 @@ export const links = [
 ] as const;
 
 export const companies = [
-  { name: "Apple", symbol: "AAPL" },
-  { name: "Amazon", symbol: "AMZN" },
-  { name: "Tesla", symbol: "TSLA" },
-  { name: "Google", symbol: "GOOGL" },
-  { name: "Microsoft", symbol: "MSFT" },
+  { name: "Apple", symbol: "AAPL", value: 0 },
+  { name: "Amazon", symbol: "AMZN", value: 1 },
+  { name: "Microsoft", symbol: "MSFT", value: 2 },
+  { name: "Nvidia", symbol: "NVDA", value: 3 },
+  { name: "Tesla", symbol: "TSLA", value: 4 },
 ] as const;
 
 export const mockArticles = [

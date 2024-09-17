@@ -14,3 +14,10 @@ export interface ArticleType {
   source: string;
   post_time_utc: string;
 }
+
+export interface PredictionType {
+  predicted_close: number;
+  predicted_trade: number;
+  probability_close: number;
+  probability_trade: number;
+}

@@ -4,15 +4,21 @@ import { auth } from "@/lib/firebase.config";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import Loader from "./loading";
+import Select from "react-select";
+import { companyOptions } from "@/lib/utils";
+import axios from "axios";
+import { PredictionType } from "@/lib/types";
 
-const Dashbaord = () => {
+const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
   const headerRef = useRef<HTMLHeadingElement>(null);
   const [signOut] = useSignOut(auth);
+  const [predictions, setPredictions] = useState<PredictionType | null>(null);
+  const apiUrl = process.env.NEXT_PUBLIC_PREDICTIONS_API_URL;
 
   const handleScroll = () => {
     if (headerRef.current) {
@@ -24,6 +30,8 @@ const Dashbaord = () => {
       }
     }
   };
+
+  if (loading) <Loader />;
 
   ("use server");
   const handleSignOut = async () => {
@@ -38,15 +46,21 @@ const Dashbaord = () => {
     e.preventDefault();
     ("use server");
     const formData = new FormData(e.currentTarget);
-    const news = formData.get("text") as string;
-    if (news) {
-      console.log(news);
-    } else {
-      console.log(error);
+    const news = formData.get("news") as string;
+    const ticker = formData.get("company") as string;
+
+    if (news && ticker) {
+      try {
+        const response = await axios.post(`${apiUrl}/predict`, {
+          headline: news,
+          ticker: Number(ticker),
+        });
+        setPredictions(response.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
-
-  if (loading) <Loader />;
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -98,23 +112,32 @@ const Dashbaord = () => {
           className="max-w-xl mx-auto font-medium text-xl 
       max-md:text-[18px] max-sm:text-[16px] text-zinc-500"
         >
-          Simply enter a news headline and we&apos;ll provide the probability of
-          the stock price going up or down.
+          Simply enter a news headline and select the corresponding stock
+          company, and we will provide you with the probability of market
+          movement.
         </p>
       </div>
       <form
         onSubmit={handleSubmit}
-        className="mx-auto flex items-end
-        gap-3"
+        className="max-w-xl mx-auto w-full flex flex-col 
+        items-center gap-3 px-5"
       >
         <input
           type="text"
-          name="text"
+          name="news"
           placeholder="Enter news headline"
           required
-          className="py-3 px-4 border border-gray-300 rounded-md
-          font-medium max-sm:w-[180px] text-ellipsis max-sm:text-sm
-          outline-none focus:border-primary"
+          className="py-[10px] px-4 border border-gray-300 rounded-md 
+            font-medium w-full text-ellipsis outline-none
+            focus:border-primary"
+        />
+        <Select
+          name="company"
+          options={companyOptions}
+          isSearchable
+          required
+          placeholder="Select Company"
+          className="w-full max-w-xs"
         />
         <button
           type="submit"
@@ -125,8 +148,26 @@ const Dashbaord = () => {
           Analyze
         </button>
       </form>
+      <div className="my-5 max-w-sm mx-auto">
+        {predictions && (
+          <div className="space-y-4">
+            {Object.entries(predictions).map(([key, value]) => (
+              <div
+                key={key}
+                className="p-4 bg-white border border-gray-300 
+                rounded-md shadow-md mb-4"
+              >
+                <h3 className="text-lg font-semibold capitalize">
+                  {key.replace(/_/g, " ")}
+                </h3>
+                <p className="text-xl font-bold text-primary">{value}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   );
 };
 
-export default Dashbaord;
+export default Dashboard;

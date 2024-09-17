@@ -24,7 +24,7 @@ const About = () => {
                 className="text-zinc-500 font-medium text-xl
               max-md:text-[18px]"
               >
-                Enter a news headline.
+                Enter a news headline and select company name.
               </p>
             </div>
           </li>
@@ -37,8 +37,7 @@ const About = () => {
                 className="text-zinc-500 font-medium text-xl
               max-md:text-[18px]"
               >
-                Our NLP sentiment analysis model determines if the news is
-                positive, negative, or neutral.
+                Our NLP sentiment analysis model determines the news sentiments.
               </p>
             </div>
           </li>
