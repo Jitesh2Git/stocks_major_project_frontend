@@ -65,7 +65,7 @@ const About = () => {
           width="350"
           height="300"
           className="object-cover rounded-md flex-1 
-          max-sm:w-[300px] md:w-[500px] lg:max-w-md"
+          max-sm:w-[300px] md:w-[500px] lg:max-w-md select-none"
         >
           Your browser does not support the video tag.
         </video>

@@ -24,7 +24,7 @@ export async function fetchArticles(symbol: string = "AAPL") {
 
   try {
     const response = await axios.get(url, { headers });
-    return response.data.data.news.slice(0, 6);
+    return response.data.data.news;
   } catch (error) {
     throw new Error("Failed to fetch articles");
   }

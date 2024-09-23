@@ -16,17 +16,22 @@ const Article = ({ articles, loading }: ArticleProps) => {
   };
 
   return (
-    // <div className={`min-h-[200px] ${!loading && "mb-20"}`}>
+    // <div className="min-h-[200px]">
     //   {loading ? (
     //     <p className="animate-pulse text-lg text-primary text-center pt-20">
     //       Loading News Feed...
     //     </p>
     //   ) : articles.length > 0 ? (
-    //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center mx-5">
+    //     <div
+    //       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+    //     gap-10 place-items-center mx-5"
+    //     >
     //       {articles?.map((article, index) => (
     //         <article
     //           key={index}
-    //           className="flex flex-col bg-slate-100 rounded-xl h-full shadow-lg hover:scale-105 hover:shadow-xl hover:bg-slate-200 transition-all duration-200 ease-out w-full"
+    //           className="flex flex-col bg-slate-100 rounded-xl h-full shadow-lg
+    //           hover:scale-105 hover:shadow-xl hover:bg-slate-200 transition-all
+    //           duration-200 ease-out w-full"
     //         >
     //           {article.article_photo_url && (
     //             <Image
@@ -51,7 +56,9 @@ const Article = ({ articles, loading }: ArticleProps) => {
     //           <Link
     //             href={article.article_url}
     //             target="_blank"
-    //             className="h-10 rounded-b-lg text-center bg-gradient-to-r from-primary to-primary_light text-white flex items-center justify-center"
+    //             className="h-10 rounded-b-lg text-center bg-gradient-to-r
+    //             from-primary to-primary_light text-white flex
+    //             items-center justify-center"
     //           >
     //             Read More
     //           </Link>
@@ -64,17 +71,22 @@ const Article = ({ articles, loading }: ArticleProps) => {
     //     </p>
     //   )}
     // </div>
-    <div className={`min-h-[200px] ${!loading && "mb-20"}`}>
+    <div className="min-h-[200px]">
       {loading ? (
         <p className="animate-pulse text-lg text-primary text-center pt-20">
           Loading News Feed...
         </p>
       ) : mockArticles.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center mx-5">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+        gap-10 place-items-center mx-5"
+        >
           {mockArticles?.map((article, index) => (
             <article
               key={index}
-              className="flex flex-col bg-slate-100 rounded-xl h-full shadow-lg hover:scale-105 hover:shadow-xl hover:bg-slate-200 transition-all duration-200 ease-out w-full"
+              className="flex flex-col bg-slate-100 rounded-xl h-full shadow-lg 
+              hover:scale-105 hover:shadow-xl hover:bg-slate-200 transition-all 
+              duration-200 ease-out w-full"
             >
               {article.article_photo_url && (
                 <Image
@@ -99,7 +111,9 @@ const Article = ({ articles, loading }: ArticleProps) => {
               <Link
                 href={article.article_url}
                 target="_blank"
-                className="h-10 rounded-b-lg text-center bg-gradient-to-r from-primary to-primary_light text-white flex items-center justify-center"
+                className="h-10 rounded-b-lg text-center bg-gradient-to-r 
+                from-primary to-primary_light text-white flex 
+                items-center justify-center"
               >
                 Read More
               </Link>
